@@ -33,6 +33,5 @@ while selector == 'yes':
 
 	selector = str.lower(input("Do you want to play again? [yes/no] "))
 
-
 print("Thank you for playing!")
 

@@ -17,6 +17,7 @@ while len(people) < 8:
 
 print("The list is: ", people)
 
+
 index = random.randint(0,7)
 
 print("I picked randomly the number ", index, " which name is: ", people[index])

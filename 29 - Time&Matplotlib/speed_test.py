@@ -12,11 +12,12 @@ import matplotlib.pyplot as plt
 
 def strdifference(str1, str2):
 	outp = 0
+	limit = max([len(str1),len(str2)])
 	try:
-		for i in range(len(str1)):
+		for i in range(limit):
 			outp+=int(str1[i] != str2[i])
 	except:
-			outp+= abs(len(str1) - len(str2))
+			outp+= limit - i
 	return outp
 
 target = "ippopotamo"
@@ -26,7 +27,7 @@ attempts = 0
 errors = []
 
 print("You will have to write the word", target,"for 5 times and you will see how much your speed improved.")
-print("Press enter to start")
+input("Press enter to start")
 
 while(attempts < 5):
 
@@ -39,15 +40,18 @@ while(attempts < 5):
 	attempts+=1
 
 if errors == 0:
-	print("Well done! You didn't do any errors!")
+	print("Well done! You didn't make any errors!")
 else:
 	print("You made", sum(errors),"mistakes during the exercise.")
 
-plt.plot(label, performance, 'b', label='Performance in s') 
-plt.plot(label, errors, 'r', label='Errors')
-plt.xlabel('Attempts')
-plt.ylabel('Values')
-plt.legend(loc='lower right')
+fig, ax1 = plt.subplots()
+ax2 = ax1.twinx()
+ax1.set_xlabel('Attempts')
+ax1.set_ylabel('Time (s)')
+ax1.plot(label, performance, 'b', label='Performance') 
+ax2.set_ylabel('Number of Errors')
+ax2.plot(label, errors, 'r', label='Errors')
+
 plt.title("Performance report")
 plt.show()
 

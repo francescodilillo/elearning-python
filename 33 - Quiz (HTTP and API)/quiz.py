@@ -10,12 +10,13 @@
 import requests
 import json
 import random
+import html
 
 def print_answers(opt_dictionary):
 
 	index = 0
 	while(index < 4):
-		print(index+1, "-", opt_dictionary[index+1])
+		print(index+1, "-", html.unescape(opt_dictionary[index+1]))
 		index += 1
 
 def incr_challenge(score):
@@ -55,7 +56,7 @@ while(termination == False):
 		random.shuffle(options)
 		indices = [1,2,3,4]
 
-		print(question['question'].replace('&quot;','"').replace('&#039;',"'"))
+		print(html.unescape(question['question']).replace('&quot;','"').replace('&#039;',"'"))
 
 		opt_dictionary = {indices[i]: options[i] for i in range(len(options))}
 
